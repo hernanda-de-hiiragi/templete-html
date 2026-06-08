@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" href="https://raw.githubusercontent.com/SukaTank01/listmedia/refs/heads/main/images/Lilith.jpeg" type="image/png">
+<style>
+@font-face{
+font-family:'Nasalization';
+src:url('assets/font/nasalization.otf') format('opentype');
+}
+
+:root{
+--primary:#00aaff; 
+--secondary: #0077cc;
+--border:rgba(0, 170, 255, 0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Nasalization',sans-serif}
+body{background:#000;color:#eaeaea;overflow-x:hidden}
+
+.container{
+width:100%;
+max-width:1180px;
+margin:auto;
+padding:0 28px;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-1;
+background:
+linear-gradient(rgba(0, 170, 255, 0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 170, 255, 0.05) 1px, transparent 1px),
+linear-gradient(120deg,#000,#0b0000,#000);
+background-size:30px 30px, 30px 30px, cover;
+animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+0%{
+background-position:0 0, 0 0, 0 0;
+}
+50%{
+background-position:60px 30px, 30px 60px, 0 0;
+}
+100%{
+background-position:0 0, 0 0, 0 0;
+}
+}
+
+header{
+position:fixed;
+width:100%;
+background:#000;
+border-bottom:1px solid var(--border);
+z-index:999;
+}
+
+.header-bar{
+height:60px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{color:var(--primary);font-weight:600;font-size:18px}
+.menu-btn{font-size:20px;color:#fff;cursor:pointer}
+
+.top-menu{
+position:fixed;
+top:-260px;
+left:0;
+width:100%;
+background:#050505;
+border-bottom:1px solid var(--border);
+transition:.35s ease;
+z-index:998;
+}
+.top-menu.show{top:60px;}
+
+.menu-inner{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:18px;
+padding:22px 0;
+}
+.menu-inner a{
+color:#ccc;
+text-decoration:none;
+font-size:15px;
+display:flex;
+gap:8px;
+align-items:center;
+}
+.menu-inner a:hover{color:var(--primary)}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+.hero h1{font-size:54px}
+.hero span{color:var(--primary)}
+.hero p{color:#8c8c8c;margin-top:10px}
+
+section{
+padding:110px 0;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+section.show{opacity:1;transform:none}
+
+.title{font-size:26px;margin-bottom:35px}
+.title .primary{color:var(--primary)}
+.title .white{color:#fff}
+
+.grid{display:grid;gap:18px}
+
+.team{
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+.member{
+border:1px solid var(--border);
+padding:18px;
+text-align:center;
+background-color: rgba(0, 170, 255, 0.02);
+}
+.role{font-size:12px;color:#9a9a9a;margin-top:4px}
+
+.skills{
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+.skill-item{
+border:1px solid var(--border);
+padding:18px;
+text-align:center;
+background-color: rgba(0, 170, 255, 0.05);
+}
+.skill-icon{
+font-size: 24px;
+color: var(--primary);
+margin-bottom: 8px;
+}
+
+.projects{
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+.project{
+border:1px solid var(--border);
+padding:18px;
+background-color: rgba(0, 170, 255, 0.02);
+}
+.project h3{
+display:flex;
+gap:8px;
+align-items:center;
+margin-bottom:6px;
+color: var(--primary);
+}
+.project p{font-size:13px;color:#aaa}
+
+.links{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+}
+.links a{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+border:1px solid var(--primary);
+color:#fff;
+padding:12px 18px;
+text-decoration:none;
+font-size:14px;
+}
+.links a:hover{
+background:var(--primary);
+color:#000;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+footer{
+border-top:1px solid var(--border);
+text-align:center;
+padding:26px 0;
+font-size:13px;
+color:#666;
+background:#050505;
+}
+
+#loader{
+position:fixed;
+inset:0;
+background:#000;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+
+.loader-box{
+text-align:center;
+color:var(--primary);
+font-size:14px;
+letter-spacing:2px;
+}
+
+.loader-box p{
+font-family:'Poppins',sans-serif;
+}
+
+.spinner{
+width:50px;
+height:50px;
+border:4px solid rgba(255,255,255,0.08);
+border-top:4px solid var(--primary);
+border-radius:50%;
+margin:auto;
+margin-bottom:14px;
+animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+0%{ transform:rotate(0deg);}
+100%{ transform:rotate(360deg);}
+}
+
+.hero-logo{
+display:block;
+width:180px;
+margin:0 auto 20px;
+border-radius: 50%; /* Membuat gambar bulat */
+object-fit: cover; /* Memastikan gambar terpotong dengan rapi */
+}
+
+/* Sembunyikan audio player lama */
+#audio-player {
+    display: none;
+}
+</style>
+</head>
+<body>
+<div id="loader">
+  <div class="loader-box">
+    <div class="spinner"></div>
+    <p>LOADING...</p>
+  </div>
+</div>
+<div class="bg"></div>
+<header>
+<div class="container header-bar">
+<div class="logo">
+<span style="color:var(--primary);">Hernanda Raihan</span>
+<span style="color:#ffffff;">A</span>
+</div>
+<i class="fa-solid fa-bars-staggered menu-btn" onclick="toggleMenu()"></i>
+</div>
+</header>
+<div class="top-menu" id="menu">
+<div class="menu-inner">
+<a href="#about"><i class="fa-solid fa-user"></i> Tentang Saya</a>
+<a href="#support"><i class="fa-solid fa-hand-holding-heart"></i> Support</a>
+<a href="#skills"><i class="fa-solid fa-code"></i> Keahlian</a>
+<a href="#projects"><i class="fa-solid fa-diagram-project"></i> Proyek</a>
+<a href="#contact"><i class="fa-solid fa-link"></i> Kontak</a>
+</div>
+</div>
+<div class="hero">
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/SukaTank01/listmedia/refs/heads/main/images/Lilith.jpeg" alt="Logo sukatank01" class="hero-logo">
+    <h1>Halo, Saya <span>HERNANDA RAIHAN A</span></h1>
+    <p>I Am Developer & CyberSec</p>
+  </div>
+</div>
+<section id="about">
+<div class="container">
+<h2 class="title"><span class="primary">Tentang</span> <span class="white">Saya</span></h2>
+<p>Saya seorang pengembang yang fokus pada otomatisasi sistem, dan pengembangan bot serta platform berbasis web. Saya tertarik pada teknologi seperti Python, Flutter, Node.js, dan penggunaan modul seperti Telegraf untuk Telegram Bot. Minat saya mencakup Networking,Teknologi,Dan hal baru</p>
+</div>
+</section>
+<section id="support">
+<div class="container">
+<h2 class="title"><span class="primary">Special Tag</span> <span class="white">Support</span></h2>
+<div class="grid team">
+<div class="member"><h3>Alvaro</h3><div class="role">My Frends</div></div>
+<div class="member"><h3>Core</h3><div class="role">My Frends</div></div>
+<div class="member"><h3>Mikael</h3><div class="role">My Frends</div></div>
+<div class="member"><h3>Dimzxzzx07</h3><div class="role">My Frends</div></div></div>
+</div>
+</section>
+<section id="skills">
+<div class="container">
+<h2 class="title"><span class="primary">Keahlian</span> <span class="white">Saya</span></h2>
+<div class="grid skills">
+    <div class="skill-item">
+        <i class="fa-brands fa-python skill-icon"></i> 
+        <h4>Python</h4>
+    </div>
+    <div class="skill-item">
+        <i class="fa-brands fa-js skill-icon"></i>
+        <h4>JavaScript</h4>
+    </div>
+    <div class="skill-item">
+        <i class="fa-brands fa-html5 skill-icon"></i>
+        <h4>HTML</h4>
+    </div>
+    <div class="skill-item">
+        <i class="fa-brands fa-css3 skill-icon"></i>
+        <h4>CSS</h4>
+    </div>
+</div>
+</div>
+</section>
+<section id="projects">
+<div class="container">
+<h2 class="title"><span class="primary">Proyek</span> <span class="white">Utama</span></h2>
+<div class="grid projects">
+<div class="project">
+<h3><i class="fa-solid fa-robot"></i>AshiraTepes</h3>
+<p>Proyek utama yang menampilkan kapabilitas manajemen bot Telegram dan otomasi tingkat lanjut.</p>
+</div>
+<div class="project">
+<h3><i class="fa-brands fa-whatsapp"></i>KiwirMD</h3>
+<p>Solusi Bot WhatsApp kelas atas untuk otomatisasi pesan, integrasi API, dan layanan pelanggan.</p>
+</div>
+<div class="project">
+<h3><i class="fa-solid fa-mobile-screen"></i>LilithCrasher</h3>
+<p>Aplikasi android berbasis flutter yang memungkinkan membuat Pengguna melakukan penyerangan Bug Whatsapp.</p>
+</div>
+<div class="project">
+<h3><i class="fa-solid fa-robot"></i> ZafkielCpanel</h3>
+<p>Bot Telegram yang berfungsi untuk mengontrol panel pterodactyl.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<h2 class="title"><span class="primary">Hubungi</span> <span class="white">Saya</span></h2>
+<div class="links">
+<a href="https://t.me/Yanz_Russian" target="_blank">
+<i class="fab fa-telegram"></i> Telegram
+</a>
+<a href="https://youtube.com/" target="_blank">
+<i class="fab fa-youtube"></i> YouTube
+</a>
+<a href="https://www.tiktok.com/" target="_blank">
+<i class="fab fa-tiktok"></i> TikTok
+</a>
+<a href="https://github.com/" target="_blank">
+<i class="fab fa-github"></i> GitHub
+</a>
+</div>
+</div>
+</section>
+<footer>
+© 2026
+</footer>
+<script>
+// Smooth menu toggle
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
+}
+
+// Intersection Observer untuk animasi smooth
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.15
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+animateChildren(entry.target);
+}
+});
+}, observerOptions);
+
+// Observe semua sections
+document.querySelectorAll('section').forEach(section => {
+observer.observe(section);
+});
+
+// Animate children dengan stagger
+function animateChildren(parent){
+const children = parent.querySelectorAll('.member, .skill-item, .project');
+children.forEach((child, index) => {
+setTimeout(() => {
+child.classList.add('animate');
+}, index * 80);
+});
+
+// Animate title
+const title = parent.querySelector('.title');
+if(title) title.classList.add('show');
+}
+
+// Parallax effect pada background saat scroll
+window.addEventListener('scroll', () => {
+const scrolled = window.pageYOffset;
+const parallaxElements = document.querySelectorAll('section');
+parallaxElements.forEach(el => {
+el.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+});
+});
+
+// Loader dengan smooth fade
+const loader = document.getElementById("loader");
+window.addEventListener("load", ()=>{
+setTimeout(()=>{
+loader.classList.add("hide");
+}, 2000);
+});
+
+// Smooth scroll untuk link menu
+document.querySelectorAll('.menu-inner a').forEach(link => {
+link.addEventListener('click', (e) => {
+e.preventDefault();
+const target = document.querySelector(link.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior:'smooth'});
+document.getElementById("menu").classList.remove("show");
+}
+});
+});
+
+// Animasi pada hover untuk menu
+document.querySelectorAll('.menu-inner a').forEach(link => {
+link.addEventListener('mouseenter', (e) => {
+e.target.style.transform = 'translateX(5px)';
+});
+link.addEventListener('mouseleave', (e) => {
+e.target.style.transform = 'translateX(0)';
+});
+});
+
+// Add transition untuk menu links
+document.querySelectorAll('.menu-inner a').forEach(link => {
+link.style.transition = 'all 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+});
+</script>
+</body>
+</html>
